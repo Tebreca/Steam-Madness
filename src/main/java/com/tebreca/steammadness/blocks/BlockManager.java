@@ -9,17 +9,23 @@ import com.tebreca.steammadness.helper.reflect.ReflectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraftforge.registries.ObjectHolder;
 
+import javax.jws.HandlerChain;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.tebreca.steammadness.Application.MODID;
+
+@ObjectHolder(MODID)
 public class BlockManager implements EntryHolder<Block> {
 
     private final BlockItemManager itemManager = new BlockItemManager();
 
     //simple block with properties of oak planks
+
     @PropertyOf(value = "OAK_PLANKS")
     public Block block1;
 
