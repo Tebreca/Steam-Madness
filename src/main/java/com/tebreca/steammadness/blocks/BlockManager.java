@@ -1,14 +1,19 @@
 package com.tebreca.steammadness.blocks;
 
 import com.tebreca.steammadness.blocks.obj.TestBlock;
+import com.tebreca.steammadness.blocks.tiles.TestTileEntity;
 import com.tebreca.steammadness.helper.annonation.OfType;
 import com.tebreca.steammadness.helper.annonation.PropertyOf;
+import com.tebreca.steammadness.helper.annonation.WithTileEntity;
 import com.tebreca.steammadness.helper.reflect.BlockInjector;
 import com.tebreca.steammadness.helper.reflect.EntryHolder;
 import com.tebreca.steammadness.helper.reflect.ReflectionHelper;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.registries.ObjectHolder;
 
 import javax.jws.HandlerChain;
@@ -36,10 +41,12 @@ public class BlockManager implements EntryHolder<Block> {
     @OfType(block = TestBlock.class)
     public Block block3;
 
-    //simple block with default properties (material rock)
-    public Block block4;
+    /*Block of type TestBlock, but without the annonation; note that this method only checks if the super class is Block,
+        so any Block instances that don't directly extend Block should use @OfType */
+    public TestBlock block4;
 
     //simple block with default properties (material rock)
+    @WithTileEntity(TestTileEntity.class)
     public Block block5;
 
     private static final BlockInjector injector = new BlockInjector();

@@ -40,6 +40,13 @@ public class BlockInjector implements Injector<Block> {
                     LOGGER.warn("Caught exception trying to make block!! falling back to default!!", e);
                 }
             }
+            if (block == null && !field.getType().equals(Block.class)){
+                try {
+                    block = (Block) field.getType().newInstance();
+                } catch (InstantiationException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
             if (block == null) {
                 Class<? extends TileEntity> tileEntityClass = null;
                 AbstractBlock.Properties properties = AbstractBlock.Properties.create(Material.ROCK);
