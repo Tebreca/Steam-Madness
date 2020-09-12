@@ -15,6 +15,8 @@ public class ItemManager implements EntryHolder<Item> {
 
     private static final ItemInjector injector = new ItemInjector();
 
+    public Item steam_tank;
+
     @Override
     public void runInjector() {
         injector.Inject(this);
